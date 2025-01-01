@@ -23,35 +23,37 @@ enum custom_keycodes {
     KVM_C4,
 };
 
-#define MACRO_DELAY_TIME 2
+#define MY_MACRO_DELAY_TIME 50
+
+// KVM macros have to be on keyboard port it looks like
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case KVM_C1:
         if (record->event.pressed) {
-            SEND_STRING_DELAY(SS_TAP(X_SCROLL_LOCK) SS_TAP(X_SCROLL_LOCK) "1" SS_TAP(X_ENTER), MACRO_DELAY_TIME);
-
+            // SEND_STRING_DELAY(X_TAP_KVM_MAGIC_KEY X_TAP_KVM_MAGIC_KEY "1" SS_TAP(X_ENTER), MY_MACRO_DELAY_TIME);
+            SEND_STRING_DELAY(SS_TAP(X_F14) SS_TAP(X_F14) "1" SS_TAP(X_ENTER), MY_MACRO_DELAY_TIME);
         } else {
             // when keycode is released
         }
         break;
     case KVM_C2:
         if (record->event.pressed) {
-            SEND_STRING_DELAY(SS_TAP(X_SCROLL_LOCK) SS_TAP(X_SCROLL_LOCK) "2" SS_TAP(X_ENTER), MACRO_DELAY_TIME);
+            SEND_STRING_DELAY(SS_TAP(X_F14) SS_TAP(X_F14) "2" SS_TAP(X_ENTER), MY_MACRO_DELAY_TIME);
         } else {
             // when keycode is released
         }
         break;
     case KVM_C3:
         if (record->event.pressed) {
-            SEND_STRING_DELAY(SS_TAP(X_SCROLL_LOCK) SS_TAP(X_SCROLL_LOCK) "3" SS_TAP(X_ENTER), MACRO_DELAY_TIME);
+            SEND_STRING_DELAY(SS_TAP(X_F14) SS_TAP(X_F14) "3" SS_TAP(X_ENTER), MY_MACRO_DELAY_TIME);
         } else {
             // when keycode is released
         }
         break;
     case KVM_C4:
         if (record->event.pressed) {
-            SEND_STRING_DELAY(SS_TAP(X_SCROLL_LOCK) SS_TAP(X_SCROLL_LOCK) "4" SS_DELAY(2) SS_TAP(X_ENTER), MACRO_DELAY_TIME);
+            SEND_STRING_DELAY(SS_TAP(X_F14) SS_TAP(X_F14) "4" SS_TAP(X_ENTER), MY_MACRO_DELAY_TIME);
         } else {
             // when keycode is released
         }
@@ -137,7 +139,7 @@ bool oled_task_user(void) {
     oled_write_P(PSTR("-----\n"), false);
     // Host Keyboard Layer Status
     oled_write_P(PSTR("MODE\n"), false);
-    oled_write_P(PSTR("\n"), false);
+    oled_write_P(PSTR("\nXXXXX\n"), false);
 
     switch (get_highest_layer(layer_state)) {
         case 0:
@@ -150,7 +152,7 @@ bool oled_task_user(void) {
             oled_write_P(PSTR("TEAMS\n"), false);
             break;
         case 3:
-            oled_write_P(PSTR("KVM\nKVM\n"), false);
+            oled_write_P(PSTR("KVM\n"), false);
             break;
         case 11:
             oled_write_P(PSTR(">SEL<\n"), false);
