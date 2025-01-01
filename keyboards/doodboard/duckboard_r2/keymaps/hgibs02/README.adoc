@@ -1,0 +1,8 @@
+= hgibs02
+
+[,bash]
+----
+qmk compile -kb doodboard/duckboard_r2 -km hgibs02
+----
+
+Simple logo, no animation

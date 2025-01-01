@@ -1,0 +1,7 @@
+// #undef  ENCODER_A_PINS
+// #define ENCODER_A_PINS { F5 }
+// #undef  ENCODER_B_PINS
+// #define ENCODER_B_PINS { F6 }
+#define ENCODER_DIRECTION_FLIP
+#undef  ENCODER_RESOLUTION
+#define ENCODER_RESOLUTION 2

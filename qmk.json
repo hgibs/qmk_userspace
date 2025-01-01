@@ -1,6 +1,8 @@
 {
-  "userspace_version": "1.1",
-  "build_targets": [
-    [ "doodboard/duckboard_r2", "hgibs01" ]
-  ]
+    "userspace_version": "1.1",
+    "build_targets": [
+        ["doodboard/duckboard_r2", "hgibs01"],
+        ["doodboard/duckboard_r2", "hgibs02"],
+        ["doodboard/duckboard_r2", "hgibs_r2_tweaked"]
+    ]
 }
